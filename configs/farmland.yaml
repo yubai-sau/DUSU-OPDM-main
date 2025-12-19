@@ -1,0 +1,43 @@
+exp_name: farmland
+seed: 42
+data:
+
+  root: "your/data/path"
+  t1: T1.npy
+  t2: T2.npy
+  label: label.npy
+  mask: null
+  patch: 5
+  train_ratio: 0.03
+  max_train_samples: 15000
+  balance: ture
+  normalize: zscore
+
+model:
+  C: null
+  P: 10           
+  K: 4
+  share_E: true
+  encoder_ch: 64
+
+loss:
+  lambda_rec: 0.6
+  lambda_tv: 0.007
+  lambda_temp: 0.2
+  use_temp: true
+
+optim:
+  lr: 0.0005
+  weight_decay: 0.00001
+  epochs_pretrain: 300
+  epochs_joint: 100
+  batch_size: 128
+  grad_clip: 5.0
+  cosine_decay: true
+
+train:
+  save_dir: runs
+
+eval:
+  batch_size: 256
+
